@@ -1,16 +1,17 @@
-var citySearchEl = document.querySelector("#search");
-var cityBtnEl = document.querySelector("#cityList");
+var citySearchEl = document.querySelector("#citySearch");
+var cityHistory = document.querySelector("#cityList");
 var weatherEl = document.querySelector("#weather");
 var forecastEl = document.querySelector("#forecast");
-var APIKey = "537a4ff57216c67ad192f0ed307f8c0e";
+var searchForm = document.querySelector("#search-form")
+var APIKey = "bde14580c0f6d91971c813d677b4b5ae";
 var city;
-var savedSearches = [];
+var cityList = [];
 var currentDay = dayjs().format('dddd, MMMM D YYYY');
 var currentTime = dayjs().format('h:mm A');
 
 
 function getApi() {
-    var cityURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    var cityURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
 
     fetch(cityURL)
         .then(function (response) {
@@ -18,28 +19,44 @@ function getApi() {
         })
         .then(function (data) {
          console.log(data);
-         forecast(lat, lon);
+         forecast(city);
     
+        currentWeather(city);
         })
 };
 
-function forecast(lat, lon){
-    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?lat=57&lon=-2.15&appid=" + APIkey + "&units=imperial"
-
+function forecast(city) {
+    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&appid=" + APIKey + "&units=imperial";
+   // var cityLon = data.coord.lon;
+   // var cityLat = data.coord.lat;
+    
     fetch(forecastURL)
         .then(function (response) {
          return response.json();
         })
         .then(function (data) {
          console.log(data);
-         var cityLon = response.coord.lon;
-         var cityLat = response.coord.lat;
         
-
         })
 
 }
-citySearchEl.addEventListener("submit", citySearch);
-cityBtnEl.addEventListener("click", cityList);
 
-getApi();
+function currentWeather(data) {
+
+}
+
+function citySearch(event) {
+    console.log("testing")
+    event.preventDefault();
+    city = document.getElementById("citySearch").value.trim();
+    //currentWeather(city); 
+    if (city !== "") {
+    cityList.push(city); 
+    }
+    localStorage.setItem("city",JSON.stringify(cityList));
+    getApi();
+}
+
+searchForm.addEventListener("submit", citySearch);
+//cityBtnEl.addEventListener("click", cityList);
+
