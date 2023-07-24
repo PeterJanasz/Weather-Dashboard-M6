@@ -19,7 +19,7 @@ function getApi(city) {
         .then(function (data) {
             console.log(data);
             currentWeather(data);
-            forecast(data);
+            
         })
 };
 
@@ -34,7 +34,7 @@ function forecast(city) {
         })
         .then(function (data) {
             console.log(data);
-
+            forecast(data);
         })
 
 }
@@ -98,7 +98,7 @@ window.addEventListener("load", function () {
     var cityNameEl = document.createElement("h2");
     cityNameEl.textContent = data.name;
 
-    var currentDayEl = document.createElement("p");
+    var currentDayEl = document.createElement("h2");
     currentDayEl.textContent = currentDay;
 
     var weatherIconEl = document.createElement("i");
@@ -121,6 +121,8 @@ window.addEventListener("load", function () {
     weather.appendChild(humidityEl);
     weather.appendChild(windSpeedEl);
   }
+
+
 searchForm.addEventListener("submit", citySearch);
 //cityButton.addEventListener("click", cityList);
 
