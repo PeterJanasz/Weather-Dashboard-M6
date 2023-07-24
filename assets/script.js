@@ -4,13 +4,12 @@ var weatherEl = document.querySelector("#weather");
 var forecastEl = document.querySelector("#forecast");
 var searchForm = document.querySelector("#search-form")
 var APIKey = "bde14580c0f6d91971c813d677b4b5ae";
-var city;
 var cityList = [];
 var currentDay = dayjs().format('dddd, MMMM D YYYY');
 var currentTime = dayjs().format('h:mm A');
 
 //https://api.openweathermap.org/data/2.5/weather?q=phoenix&appid=bde14580c0f6d91971c813d677b4b5ae
-function getApi() {
+function getApi(city) {
     var cityURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
 
     fetch(cityURL)
@@ -19,8 +18,8 @@ function getApi() {
         })
         .then(function (data) {
             console.log(data);
-            currentWeather(city);
-            forecast(city);
+            currentWeather(data);
+            forecast(data);
         })
 };
 
@@ -51,7 +50,7 @@ window.addEventListener("load", function () {
   
   function citySearch(event) {
     event.preventDefault();
-    city = citySearchEl.value.trim();
+    let city = citySearchEl.value.trim();
   
     // Check if the city is not empty and not already in the list before adding
     if (city !== "" && !cityList.includes(city)) {
@@ -59,7 +58,7 @@ window.addEventListener("load", function () {
       localStorage.setItem("city", JSON.stringify(cityList));
       updateCitySearchHistory();
       console.log(city);
-      getApi();
+      getApi(city);
     }
   
     // Clear the input field after the form submission
@@ -82,8 +81,8 @@ window.addEventListener("load", function () {
       // Add click event listener to the city button
       cityButton.addEventListener("click", function () {
         // On button click, fetch weather data for the selected city
-        city = cityButton.textContent;
-        getApi();
+        let city = cityButton.textContent;
+        getApi(city);
       });
   
       cityHistory.appendChild(listItem);
@@ -91,6 +90,7 @@ window.addEventListener("load", function () {
   }
 
   function currentWeather(data) {
+    console.log(data);
     var weather = document.querySelector("#weather");
     // Clear the existing weather information before displaying new data
     weather.innerHTML = "";
