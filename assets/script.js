@@ -9,8 +9,9 @@ var cityList = [];
 var currentDay = dayjs().format('dddd, MMMM D YYYY');
 var currentTime = dayjs().format('h:mm A');
 
+//https://api.openweathermap.org/data/2.5/weather?q=phoenix&appid=bde14580c0f6d91971c813d677b4b5ae
 function getApi() {
-    var cityURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
+    var cityURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
 
     fetch(cityURL)
         .then(function (response) {
@@ -18,9 +19,8 @@ function getApi() {
         })
         .then(function (data) {
             console.log(data);
-            forecast(city);
-
             currentWeather(city);
+            forecast(city);
         })
 };
 
@@ -40,10 +40,6 @@ function forecast(city) {
 
 }
 
-function currentWeather(data) {
-
-}
-
 // Load the city search history from localStorage on page load
 window.addEventListener("load", function () {
     var storedCityList = JSON.parse(localStorage.getItem("city"));
@@ -55,13 +51,14 @@ window.addEventListener("load", function () {
   
   function citySearch(event) {
     event.preventDefault();
-    city = document.getElementById("citySearch").value.trim();
+    city = citySearchEl.value.trim();
   
     // Check if the city is not empty and not already in the list before adding
     if (city !== "" && !cityList.includes(city)) {
       cityList.push(city);
       localStorage.setItem("city", JSON.stringify(cityList));
       updateCitySearchHistory();
+      console.log(city);
       getApi();
     }
   
@@ -79,7 +76,7 @@ window.addEventListener("load", function () {
       // Create a button for each city and set its text content to the city name
       var cityButton = document.createElement("button");
       cityButton.textContent = city;
-      cityButton.classList.add("search-history-item");
+      cityButton.classList.add("cityList");
       listItem.appendChild(cityButton);
   
       // Add click event listener to the city button
@@ -93,6 +90,37 @@ window.addEventListener("load", function () {
     });
   }
 
+  function currentWeather(data) {
+    var weather = document.querySelector("#weather");
+    // Clear the existing weather information before displaying new data
+    weather.innerHTML = "";
+
+    var cityNameEl = document.createElement("h2");
+    cityNameEl.textContent = data.name;
+
+    var currentDayEl = document.createElement("p");
+    currentDayEl.textContent = currentDay;
+
+    var weatherIconEl = document.createElement("i");
+    weatherIconEl.classList.add(); //retireve icon data
+
+    var temperatureEl = document.createElement("p");
+    temperatureEl.textContent = "Temperature: " + data.main.temp + " °F";
+
+    var humidityEl = document.createElement("p");
+    humidityEl.textContent = "Humidity: " + data.main.humidity + "%";
+
+    var windSpeedEl = document.createElement("p");
+    windSpeedEl.textContent = "Wind Speed: " + data.wind.speed + " mph";
+
+      // Append all elements to the weather div
+    weather.appendChild(cityNameEl);
+    weather.appendChild(currentDayEl);
+    weather.appendChild(weatherIconEl);
+    weather.appendChild(temperatureEl);
+    weather.appendChild(humidityEl);
+    weather.appendChild(windSpeedEl);
+  }
 searchForm.addEventListener("submit", citySearch);
-cityBtnEl.addEventListener("click", cityList);
+//cityButton.addEventListener("click", cityList);
 
