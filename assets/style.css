@@ -50,6 +50,32 @@
     flex-direction: column;
   }
 
+  .container-weather {
+    display: none;
+    width: 100%;/* fill out screen*/
+    border: 2px solid var(--dark);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 5px 1px;
+    width: fit-content;
+    margin: 20px;
+    padding: 10px;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .container-forecast {
+    display: none;
+    border: 2px solid var(--dark);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 5px 1px;
+    width: fit-content;
+    margin: 20px;
+    padding: 10px;
+    gap: 10px;
+    
+    flex-direction: column;
+  }
+
   .input-group {
     position: relative;
     display: -ms-flexbox;
@@ -84,4 +110,4 @@
 
   #forecast{
 
-  }*/
+  }
