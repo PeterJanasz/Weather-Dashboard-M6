@@ -135,6 +135,7 @@ function currentWeather(data) {
 }
 
 function weatherForecast(data) {
+    console.log(data);
     var forecastContainer = document.querySelector(".container-forecast");
     forecastContainer.setAttribute("style", "display: flex;");
 
