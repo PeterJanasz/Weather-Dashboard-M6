@@ -23,28 +23,45 @@
   </header>
   <main>
 
-    <div class="container col1">
-      <div>
-        <h2>Search by City</h2>
-        <form id="search-form">
-          <div class="input-group">
-            <input class="form-control" placeholder="Enter city name" id="citySearch">
-            <button type="submit" id="searchBtn" class="btn btn-primary">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </form>
-        <ul id="cityList" class="search-history-list"></ul>
+    <div class="row">
+      <div class="container">
+        <div>
+          <h2>Search by City</h2>
+          <form id="search-form">
+            <div class="input-group">
+              <input class="form-control" placeholder="Enter city name" id="citySearch">
+              <button type="submit" id="searchBtn" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </form>
+          <ul id="cityList" class="search-history-list"></ul>
+        </div>
+      </div>
+
+      <div class="container-weather" id="weather">
+
       </div>
     </div>
+    <div class="container-forecast">
 
-      <div class="container-weather contaiiner-fluid" id="weather">
+      <div class="col" id="forecast1">
+
+      </div>
+      <div class="col" id="forecast2">
+
+      </div>
+      <div class="col" id="forecast3">
+
+      </div>
+      <div class="col" id="forecast4">
+
+      </div>
+      <div class="col" id="forecast5">
 
       </div>
 
-      <div class="container-forecast" id="forecast">
-
-      </div>
+    </div>
 
   </main>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"

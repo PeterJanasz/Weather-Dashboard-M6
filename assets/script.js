@@ -1,7 +1,7 @@
 var citySearchEl = document.querySelector("#citySearch");
 var cityHistory = document.querySelector("#cityList");
 var weatherEl = document.querySelector("#weather");
-var forecastEl = document.querySelector("#forecast");
+//var forecastEl = document.querySelector("#forecast");
 var searchForm = document.querySelector("#search-form")
 var APIKey = "bde14580c0f6d91971c813d677b4b5ae";
 var cityList = [];
@@ -28,6 +28,7 @@ function weather(city) {
 
 function forecast(city) {
     console.log(city);
+    clearForecast();
     var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=imperial";
     // var cityLon = data.coord.lon;
     // var cityLat = data.coord.lat;
@@ -133,15 +134,30 @@ function currentWeather(data) {
 }
 
 function weatherForecast(data) {
-    var forecast = document.querySelector("#forecast");
     var forecastContainer = document.querySelector(".container-forecast");
     forecastContainer.setAttribute("style", "display: flex;");
 
-    forecast.innerHTML = "";
+    //forecast.innerHTML = "";
 
-    for (var i = 1; i < 5; i++) {
+    for (var i = 1; i <= 5; i++) {
+        if (i === 1) {
+            var forecast = document.querySelector("#forecast1");
+        }
+        else if (i === 2) {
+            var forecast = document.querySelector("#forecast2");
+        }
+        else if (i === 3) {
+            var forecast = document.querySelector("#forecast3");
+        }
+        else if (i === 4) {
+            var forecast = document.querySelector("#forecast4");
+        }
+        else if (i === 5) {
+            var forecast = document.querySelector("#forecast5");
+        }
+
         var forecastData = data.list[i * 8];
-        
+
         var cityNameEl = document.createElement("h2");
         cityNameEl.textContent = data.name;
 
@@ -172,6 +188,14 @@ function weatherForecast(data) {
         forecast.appendChild(windSpeedEl);
     }
 }
+function clearForecast() {
+    // Clear the existing forecast data by setting the innerHTML of each forecast element to an empty string
+    document.querySelector("#forecast1").innerHTML = "";
+    document.querySelector("#forecast2").innerHTML = "";
+    document.querySelector("#forecast3").innerHTML = "";
+    document.querySelector("#forecast4").innerHTML = "";
+    document.querySelector("#forecast5").innerHTML = "";
+  }
 searchForm.addEventListener("submit", citySearch);
 //cityButton.addEventListener("click", cityList);
 
