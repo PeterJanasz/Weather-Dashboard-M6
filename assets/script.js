@@ -109,8 +109,10 @@ function currentWeather(data) {
     var currentDayEl = document.createElement("h2");
     currentDayEl.textContent = currentDay;
 
-    var weatherIconEl = document.createElement("i");
-    weatherIconEl.classList.add(); //retireve icon data
+    var weatherIconEl = document.createElement("img");
+    var weatherIconCode = data.weather[0].icon;
+    weatherIconEl.setAttribute("src", "https://openweathermap.org/img/w/" + weatherIconCode + ".png");
+    weatherIconEl.setAttribute("alt", "Weather Icon");
 
     var temperatureEl = document.createElement("p");
     temperatureEl.textContent = "Temperature: " + data.main.temp + " °F";
@@ -139,6 +141,7 @@ function weatherForecast(data) {
 
     for (var i = 1; i < 5; i++) {
         var forecastData = data.list[i * 8];
+        
         var cityNameEl = document.createElement("h2");
         cityNameEl.textContent = data.name;
 
@@ -146,8 +149,10 @@ function weatherForecast(data) {
         var currentDayEl = document.createElement("h2");
         currentDayEl.textContent = forecastDate;
 
-        var weatherIconEl = document.createElement("i");
-        weatherIconEl.classList.add(); //retireve icon data
+        var weatherIconEl = document.createElement("img");
+        var forecastIcon = forecastData.weather[0].icon;
+        weatherIconEl.setAttribute("src", "https://openweathermap.org/img/w/" + forecastIcon + ".png");
+        weatherIconEl.setAttribute("alt", "Weather Icon");
 
         var temperatureEl = document.createElement("p");
         temperatureEl.textContent = "Temperature: " + forecastData.main.temp + " °F" + i;
