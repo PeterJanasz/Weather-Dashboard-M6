@@ -38,10 +38,6 @@
     font-weight: bold;
   }
 
-  h3{
-    font-family: 'Raleway', sans-serif;
-    font-family: 'Victor Mono', monospace;
-  }
 
   .container {
     border: 2px solid var(--dark);
@@ -77,7 +73,7 @@
     border: 2px solid var(--dark);
     border-radius: var(--border-radius);
     box-shadow: 0 0 5px 1px;
-    width: fit-content;
+    width:auto;
     margin: 20px;
     padding: 10px;
     gap: 10px;
@@ -131,11 +127,5 @@
       font-size: 20px;
     }
   }
+
   
-  /*#weather{
-
-  }
-
-  #forecast{
-
-  }

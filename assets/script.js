@@ -163,7 +163,7 @@ function weatherForecast(data) {
         var cityNameEl = document.createElement("h2");
         cityNameEl.textContent = data.name;
 
-        var forecastDate = dayjs().add(i, 'day').format('dddd, MMMM D YYYY'); // Calculate the forecast date for each day
+        var forecastDate = dayjs().add(i, 'day').format('MMMM D'); // Calculate the forecast date for each day
         var currentDayEl = document.createElement("h2");
         currentDayEl.textContent = forecastDate;
 
