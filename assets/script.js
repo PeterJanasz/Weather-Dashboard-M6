@@ -105,7 +105,7 @@ function currentWeather(data) {
 
     weather.innerHTML = "";
 
-    var cityNameEl = document.createElement("h2");
+    var cityNameEl = document.createElement("h1");
     cityNameEl.textContent = data.name;
 
     var currentDayEl = document.createElement("h2");
@@ -141,6 +141,7 @@ function weatherForecast(data) {
 
     //forecast.innerHTML = "";
 
+    //created forecast cards to improve display in container
     for (var i = 0; i <= 5; i++) {
         if (i === 0) {
             var forecast = document.querySelector("#forecast1");
@@ -159,7 +160,7 @@ function weatherForecast(data) {
         }
 
         var forecastData = data.list[i * 8];
-
+        //create elements to add weeather info to html by creating elements
         var cityNameEl = document.createElement("h2");
         cityNameEl.textContent = data.name;
 
@@ -197,7 +198,7 @@ function clearForecast() {
     document.querySelector("#forecast3").innerHTML = "";
     document.querySelector("#forecast4").innerHTML = "";
     document.querySelector("#forecast5").innerHTML = "";
-  }
+}
 searchForm.addEventListener("submit", citySearch);
 //cityButton.addEventListener("click", cityList);
 
