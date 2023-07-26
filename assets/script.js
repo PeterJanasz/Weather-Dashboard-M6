@@ -39,7 +39,7 @@ function forecast(city) {
         })
         .then(function (data) {
             console.log(data);
-            weatherForecast(data);//recursive
+            weatherForecast(data);
         })
 
 }
@@ -64,6 +64,7 @@ function citySearch(event) {
         updateCitySearchHistory();
         console.log(city);
         weather(city);
+        forecast(city);
     }
 
     // Clear the input field after the form submission
@@ -139,20 +140,20 @@ function weatherForecast(data) {
 
     //forecast.innerHTML = "";
 
-    for (var i = 1; i <= 5; i++) {
-        if (i === 1) {
+    for (var i = 0; i <= 5; i++) {
+        if (i === 0) {
             var forecast = document.querySelector("#forecast1");
         }
-        else if (i === 2) {
+        else if (i === 1) {
             var forecast = document.querySelector("#forecast2");
         }
-        else if (i === 3) {
+        else if (i === 2) {
             var forecast = document.querySelector("#forecast3");
         }
-        else if (i === 4) {
+        else if (i === 3) {
             var forecast = document.querySelector("#forecast4");
         }
-        else if (i === 5) {
+        else if (i === 4) {
             var forecast = document.querySelector("#forecast5");
         }
 
