@@ -142,24 +142,24 @@ function weatherForecast(data) {
     //forecast.innerHTML = "";
 
     //created forecast cards to improve display in container
-    for (var i = 0; i <= 5; i++) {
-        if (i === 0) {
+    for (var i = 1; i <= 5; i++) {
+        if (i === 1) {
             var forecast = document.querySelector("#forecast1");
         }
-        else if (i === 1) {
+        else if (i === 2) {
             var forecast = document.querySelector("#forecast2");
         }
-        else if (i === 2) {
+        else if (i === 3) {
             var forecast = document.querySelector("#forecast3");
         }
-        else if (i === 3) {
+        else if (i === 4) {
             var forecast = document.querySelector("#forecast4");
         }
-        else if (i === 4) {
+        else if (i === 5) {
             var forecast = document.querySelector("#forecast5");
         }
 
-        var forecastData = data.list[i * 8];
+        var forecastData = data.list[i * 8 - 1];
         //create elements to add weeather info to html by creating elements
         var cityNameEl = document.createElement("h2");
         cityNameEl.textContent = data.name;

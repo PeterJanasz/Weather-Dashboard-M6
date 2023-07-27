@@ -65,8 +65,8 @@ h2 {
 }
 
 #weather img {
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
 }
 
 .container-forecast {
@@ -113,11 +113,16 @@ h2 {
         flex-direction: column;
     }
 
+    .container {
+        width: 90%;
+    }
+
     #weather,
     .container-forecast {
         display: none;
         flex-direction: column;
         align-items: center;
+        width: 90%;
     }
 
     h1 {
