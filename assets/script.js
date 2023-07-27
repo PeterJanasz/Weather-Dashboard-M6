@@ -142,6 +142,7 @@ function weatherForecast(data) {
     //forecast.innerHTML = "";
 
     //created forecast cards to improve display in container
+    //start with 1 to get next day instead of current day
     for (var i = 1; i <= 5; i++) {
         if (i === 1) {
             var forecast = document.querySelector("#forecast1");
@@ -159,7 +160,7 @@ function weatherForecast(data) {
             var forecast = document.querySelector("#forecast5");
         }
 
-        var forecastData = data.list[i * 8 - 1];
+        var forecastData = data.list[i * 8 - 1];// adjust index to get next day instead of current
         //create elements to add weeather info to html by creating elements
         var cityNameEl = document.createElement("h2");
         cityNameEl.textContent = data.name;
