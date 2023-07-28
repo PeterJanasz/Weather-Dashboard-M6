@@ -9,4 +9,4 @@ Created a weeathe dashboard using vanilla JavaScript. When page is loaded, user 
 
 ![Screenshot of website](/assets/Screenshot%202023-07-26%20at%203.06.35%20PM.png)
 
- - [Deployed] https://github.com/PeterJanasz/Weather-Dashboard-M6/settings/pages
+ - [Deployed] https://peterjanasz.github.io/Weather-Dashboard-M6/
